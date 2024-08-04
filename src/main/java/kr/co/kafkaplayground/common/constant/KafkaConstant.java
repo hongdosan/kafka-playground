@@ -1,6 +1,11 @@
 package kr.co.kafkaplayground.common.constant;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class KafkaConstant {
+
 	public static final String BOOTSTRAP_SERVERS = "bootstrap.servers";
 	public static final String BOOTSTRAP_SERVERS_VALUE = "127.0.0.1:9092";
 	public static final String KEY_SERIALIZER = "key.serializer";
