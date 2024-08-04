@@ -1,4 +1,4 @@
-package kr.co.kafkaplayground.producer;
+package kr.co.kafkaplayground.kafka.producer;
 
 import java.util.Properties;
 
