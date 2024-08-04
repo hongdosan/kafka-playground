@@ -9,5 +9,4 @@ public class KafkaPlaygroundApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KafkaPlaygroundApplication.class, args);
 	}
-
 }
