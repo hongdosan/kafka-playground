@@ -6,7 +6,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
-import kr.co.kafkaplayground.common.constant.KafkaConstant;
+import kr.co.kafkaplayground.common.constant.ProducerConstant;
 import kr.co.kafkaplayground.common.error.model.ErrorMessage;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,19 +14,25 @@ import lombok.extern.slf4j.Slf4j;
 public class ProducerFireForgot {
 
 	public static void main(String[] args) {
-		Properties properties = new Properties();
-		properties.put(KafkaConstant.BOOTSTRAP_SERVERS, KafkaConstant.BOOTSTRAP_SERVERS_VALUE);
-		properties.put(KafkaConstant.KEY_SERIALIZER, KafkaConstant.SERIALIZER_VALUE);
-		properties.put(KafkaConstant.VALUE_SERIALIZER, KafkaConstant.SERIALIZER_VALUE);
+		final Properties properties = generateProperties();
 
 		try (Producer<String, String> producer = new KafkaProducer<>(properties)) {
 			for (int i = 0; i < 3; i++) {
 				ProducerRecord<String, String> producerRecord =
-					new ProducerRecord<>(KafkaConstant.BASIC_TOPIC, KafkaConstant.BASIC_MESSAGE + i);
+					new ProducerRecord<>(ProducerConstant.TOPIC_BASIC_01, ProducerConstant.RECORD_MESSAGE + i);
 				producer.send(producerRecord);
 			}
 		} catch (Exception e) {
 			log.error(ErrorMessage.BASE.getMessage() + e);
 		}
+	}
+
+	private static Properties generateProperties() {
+		Properties properties = new Properties();
+		properties.put(ProducerConstant.BOOTSTRAP_SERVERS, ProducerConstant.BOOTSTRAP_SERVERS_LOCAL);
+		properties.put(ProducerConstant.SERIALIZER_KEY, ProducerConstant.SERIALIZER_STRING);
+		properties.put(ProducerConstant.SERIALIZER_VALUE, ProducerConstant.SERIALIZER_STRING);
+
+		return properties;
 	}
 }

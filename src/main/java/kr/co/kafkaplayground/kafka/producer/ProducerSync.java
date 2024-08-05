@@ -8,7 +8,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 
 import kr.co.kafkaplayground.common.constant.Constant;
-import kr.co.kafkaplayground.common.constant.KafkaConstant;
+import kr.co.kafkaplayground.common.constant.ProducerConstant;
 import kr.co.kafkaplayground.common.error.model.ErrorMessage;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,22 +16,19 @@ import lombok.extern.slf4j.Slf4j;
 public class ProducerSync {
 
 	public static void main(String[] args) {
-		Properties properties = new Properties();
-		properties.put(KafkaConstant.BOOTSTRAP_SERVERS, KafkaConstant.BOOTSTRAP_SERVERS_VALUE);
-		properties.put(KafkaConstant.KEY_SERIALIZER, KafkaConstant.SERIALIZER_VALUE);
-		properties.put(KafkaConstant.VALUE_SERIALIZER, KafkaConstant.SERIALIZER_VALUE);
+		final Properties properties = generateProperties();
 
 		try (Producer<String, String> producer = new KafkaProducer<>(properties)) {
 			for (int i = 0; i < 3; i++) {
 				ProducerRecord<String, String> producerRecord =
-					new ProducerRecord<>(KafkaConstant.BASIC_TOPIC, KafkaConstant.BASIC_MESSAGE + i);
+					new ProducerRecord<>(ProducerConstant.TOPIC_BASIC_01, ProducerConstant.RECORD_MESSAGE + i);
 				RecordMetadata recordMetadata = producer.send(producerRecord).get();
 
-				log.info(KafkaConstant.TOPIC + recordMetadata.topic());
-				log.info(KafkaConstant.PARTITION + recordMetadata.partition());
-				log.info(KafkaConstant.OFFSET + recordMetadata.offset());
-				log.info(KafkaConstant.KEY + producerRecord.key());
-				log.info(KafkaConstant.RECEIVED_MESSAGE + producerRecord.value() + Constant.NEWLINE);
+				log.info(ProducerConstant.TOPIC_MESSAGE + recordMetadata.topic());
+				log.info(ProducerConstant.PARTITION_MESSAGE + recordMetadata.partition());
+				log.info(ProducerConstant.OFFSET_MESSAGE + recordMetadata.offset());
+				log.info(ProducerConstant.KEY_MESSAGE + producerRecord.key());
+				log.info(ProducerConstant.RECEIVED_MESSAGE + producerRecord.value() + Constant.NEWLINE);
 			}
 		} catch (InterruptedException e) {
 			log.error(ErrorMessage.INTERRUPTED.getMessage() + e);
@@ -39,5 +36,14 @@ public class ProducerSync {
 		} catch (Exception e) {
 			log.error(ErrorMessage.BASE.getMessage() + e);
 		}
+	}
+
+	private static Properties generateProperties() {
+		Properties properties = new Properties();
+		properties.put(ProducerConstant.BOOTSTRAP_SERVERS, ProducerConstant.BOOTSTRAP_SERVERS_LOCAL);
+		properties.put(ProducerConstant.SERIALIZER_KEY, ProducerConstant.SERIALIZER_STRING);
+		properties.put(ProducerConstant.SERIALIZER_VALUE, ProducerConstant.SERIALIZER_STRING);
+
+		return properties;
 	}
 }
