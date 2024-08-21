@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ConsumerConstant {
 
-	public static final String BOOTSTRAP_SERVERS = "bootstrap.servers";
 	public static final String BOOTSTRAP_SERVERS_LOCAL = "127.0.0.1:9092";
 	public static final String DESERIALIZER_KEY = "key.deserializer";
 	public static final String DESERIALIZER_VALUE = "value.deserializer";

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.kafka.clients.consumer.Consumer;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -43,7 +44,7 @@ public class ConsumerAsync {
 
 	private static Properties generateProperties() {
 		Properties properties = new Properties();
-		properties.put(ConsumerConstant.BOOTSTRAP_SERVERS, ConsumerConstant.BOOTSTRAP_SERVERS_LOCAL);
+		properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, ConsumerConstant.BOOTSTRAP_SERVERS_LOCAL);
 		properties.put(ConsumerConstant.GROUP_ID, ConsumerConstant.GROUP_CONSUMER_01);
 		properties.put(ConsumerConstant.ENABLE_AUTO_COMMIT, false);
 		properties.put(ConsumerConstant.AUTO_OFFSET_RESET, ConsumerConstant.LATEST);
