@@ -1,4 +1,4 @@
-package kr.co.kafkaplayground.common.error.model;
+package kr.co.kafkaplayground.error.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -11,7 +11,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 import kr.co.kafkaplayground.common.constant.Constant;
 import kr.co.kafkaplayground.common.constant.ConsumerConstant;
-import kr.co.kafkaplayground.common.error.model.ErrorMessage;
+import kr.co.kafkaplayground.error.model.ErrorMessage;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

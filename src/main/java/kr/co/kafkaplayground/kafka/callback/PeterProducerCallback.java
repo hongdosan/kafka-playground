@@ -6,7 +6,7 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 
 import kr.co.kafkaplayground.common.constant.Constant;
 import kr.co.kafkaplayground.common.constant.ProducerConstant;
-import kr.co.kafkaplayground.common.error.model.ErrorMessage;
+import kr.co.kafkaplayground.error.model.ErrorMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
