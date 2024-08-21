@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ProducerConstant {
 
-	public static final String BOOTSTRAP_SERVERS = "bootstrap.servers";
 	public static final String BOOTSTRAP_SERVERS_LOCAL = "127.0.0.1:9092";
-	public static final String SERIALIZER_KEY = "key.serializer";
-	public static final String SERIALIZER_VALUE = "value.serializer";
+	public static final String BOOTSTRAP_SERVERS_PETER01 = "peter-kafka01:9092";
+	public static final String BOOTSTRAP_SERVERS_PETER02 = "peter-kafka02:9092";
+	public static final String BOOTSTRAP_SERVERS_PETER03 = "peter-kafka03:9092";
 	public static final String SERIALIZER_STRING = "org.apache.kafka.common.serialization.StringSerializer";
 	public static final String TOPIC_BASIC_01 = "peter-basic01";
 	public static final String RECORD_MESSAGE = "Apache Kafka is a distributed streaming platform - ";

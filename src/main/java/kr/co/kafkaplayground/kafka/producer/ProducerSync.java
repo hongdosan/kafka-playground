@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 
@@ -40,9 +41,9 @@ public class ProducerSync {
 
 	private static Properties generateProperties() {
 		Properties properties = new Properties();
-		properties.put(ProducerConstant.BOOTSTRAP_SERVERS, ProducerConstant.BOOTSTRAP_SERVERS_LOCAL);
-		properties.put(ProducerConstant.SERIALIZER_KEY, ProducerConstant.SERIALIZER_STRING);
-		properties.put(ProducerConstant.SERIALIZER_VALUE, ProducerConstant.SERIALIZER_STRING);
+		properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, ProducerConstant.BOOTSTRAP_SERVERS_LOCAL);
+		properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, ProducerConstant.SERIALIZER_STRING);
+		properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ProducerConstant.SERIALIZER_STRING);
 
 		return properties;
 	}
